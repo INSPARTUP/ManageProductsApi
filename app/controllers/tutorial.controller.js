@@ -5,7 +5,7 @@ const Tutorial = db.tutorials;
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.nom) {
-    res.status(400).send({ message: "Content can not be empty!" });
+    res.status(400).send({ message: "Le contenu ne peut pas être vide!" });
     return;
   }
 
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Une erreur s'est produite lors de la création du produit."
       });
     });
 };
@@ -45,7 +45,7 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Une erreur s'est produite lors de la récupération du produit."
       });
     });
 };
@@ -57,13 +57,13 @@ exports.findOne = (req, res) => {
   Tutorial.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Tutorial with id " + id });
+        res.status(404).send({ message: "Produit non trouvé avec identifiant " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Tutorial with id=" + id });
+        .send({ message: "Erreur lors de la récupération du produit avec l'identifiant=" + id });
     });
 };
 
@@ -71,7 +71,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
-      message: "Data to update can not be empty!"
+      message: "Les données à mettre à jour ne peuvent pas être vides!"
     });
   }
 
@@ -81,13 +81,13 @@ exports.update = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
+          message: `Impossible de mettre à jour le produit avec l'identifiant=${id}. Peut-être que Produit n'a pas été trouvé!`
         });
-      } else res.send({ message: "Tutorial was updated successfully." });
+      } else res.send({ message: "Le produit a été mis à jour avec succès." });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id
+        message: "Erreur lors de la mise à jour du produit avec l'ID=" + id
       });
     });
 };
@@ -100,17 +100,17 @@ exports.delete = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+          message: `Impossible de supprimer le produit avec l'identifiant=${id}. Peut-être que le produit n'a pas été trouvé!`
         });
       } else {
         res.send({
-          message: "Tutorial was deleted successfully!"
+          message: "Le produit a été supprimé avec succès!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Tutorial with id=" + id
+        message: "Impossible de supprimer le produit avec l'identifiant=" + id
       });
     });
 };
@@ -120,13 +120,13 @@ exports.deleteAll = (req, res) => {
   Tutorial.deleteMany({})
     .then(data => {
       res.send({
-        message: `${data.deletedCount} Tutorials were deleted successfully!`
+        message: `${data.deletedCount} Le produit a été supprimé avec succès!`
       });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all tutorials."
+          err.message || "Une erreur s'est produite lors de la suppression de tous les produits."
       });
     });
 };
@@ -140,7 +140,7 @@ exports.findAllPublished = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Une erreur s'est produite lors de la récupération des produits."
       });
     });
 };

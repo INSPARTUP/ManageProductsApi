@@ -23,16 +23,16 @@ db.mongoose
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Connected to the database!");
+    console.log("Connecté à la base de données!");
   })
   .catch(err => {
-    console.log("Cannot connect to the database!", err);
+    console.log("Impossible de se connecter à la base de données!", err);
     process.exit();
   });
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to DecoStore application." });
+  res.json({ message: "Bienvenue dans l'application Kagu." });
 });
 
 require("./app/routes/turorial.routes")(app);
@@ -40,5 +40,5 @@ require("./app/routes/turorial.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Le serveur fonctionne sur le port ${PORT}.`);
 });
