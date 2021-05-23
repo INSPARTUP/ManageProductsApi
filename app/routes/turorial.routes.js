@@ -8,7 +8,6 @@ module.exports = app => {
 
   // Retrieve all Products
   router.get("/", tutorials.findAll);
-
   // Retrieve all published Products
   router.get("/published", tutorials.findAllPublished);
 
@@ -23,6 +22,9 @@ module.exports = app => {
 
   // Create a new Product
   router.delete("/", tutorials.deleteAll);
+
+  //////////////////////////////////////////
+  router.get("/type", tutorials.findAlltype);
 
   app.use("/api/produits", router);
 };

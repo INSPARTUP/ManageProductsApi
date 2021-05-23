@@ -144,3 +144,19 @@ exports.findAllPublished = (req, res) => {
       });
     });
 };
+
+exports.findAlltype = (req, res) => {
+  const type = req.query.type;
+  var condition = type ? { type: { $regex: new RegExp(type), $options: "i" } } : {};
+
+  Tutorial.find(condition)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Une erreur s'est produite lors de la récupération du produit."
+      });
+    });
+};
