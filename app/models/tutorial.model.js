@@ -6,7 +6,11 @@ module.exports = mongoose => {
       prix: Number,
       quantite: Number,
       description: String,
-      imageurl: String
+      imageurl: String,
+      accepted: {
+        type: Boolean,
+        default: false
+      },
     },
    { timestamps: true }
   );
