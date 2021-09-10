@@ -7,7 +7,7 @@ module.exports = mongoose => {
       quantite: Number,
       description: String,
       imageurl: String,
-      accepted: {
+      archived: {
         type: Boolean,
         default: false
       },
